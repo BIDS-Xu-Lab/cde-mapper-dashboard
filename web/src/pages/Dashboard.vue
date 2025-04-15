@@ -141,66 +141,150 @@ const option_sankey = ref({
     grid: {
         left: '0',
         right: '0',
-        top: '0',
+        top: 0,
         bottom: '0',
+    },
+    tooltip: {
+        trigger: 'item',
+        triggerOn: 'mousemove'
     },
     series: {
         type: 'sankey',
-        layout: 'none',
+        nodeAlign: 'right',
         emphasis: {
         focus: 'adjacency'
         },
+        nodeWidth: 8,
+        lineStyle: {
+            color: 'gradient',
+        },
+        itemStyle: {
+            borderRadius: 2,
+        },
         data: [
         {
-            name: 'a'
+            name: 'User Imported',
+            itemStyle: {
+                color: '#DEE3E9',
+                borderColor: '#efefef',
+            },
         },
         {
-            name: 'b'
+            name: 'To be Decided',
+            itemStyle: {
+                color: '#FF8000',
+                borderColor: '#efefef',
+            },
         },
         {
-            name: 'a1'
+            name: 'Mapped',
+            itemStyle: {
+                color: '#FFBE0B',
+                borderColor: '#efefef',
+            },
         },
         {
-            name: 'a2'
+            name: 'Reviewed',
+            itemStyle: {
+                color: '#0074FF',
+                borderColor: '#efefef',
+            },
         },
         {
-            name: 'b1'
+            name: 'Under Review',
+            itemStyle: {
+                color: '#63AAFF',
+                borderColor: '#efefef',
+            },
         },
         {
-            name: 'c'
-        }
-        ],
-        links: [
+            name: 'Suggested',
+            itemStyle: {
+                color: '#A347FF',
+                borderColor: '#efefef',
+            },
+        },
         {
-            source: 'a',
-            target: 'a1',
+            name: 'Meta-reviewed',
+            itemStyle: {
+                color: '#3561C1',
+                borderColor: '#efefef',
+            },
+        },
+        {
+            name: 'Included',
+            itemStyle: {
+                color: '#7FD854',
+                borderColor: '#efefef',
+            },
+        },
+        {
+            name: 'Excluded',
+            itemStyle: {
+                color: '#A9A9A9',
+                borderColor: '#efefef',
+            },
+        },
+        {
+            name: 'Proposed as New CDE',
+            itemStyle: {
+                color: '#00A676',
+                borderColor: '#efefef',
+            },
+        },
+    ],
+    links: [
+        {
+            source: 'User Imported',
+            target: 'Mapped',
+            value: 95
+        },
+        {
+            source: 'User Imported',
+            target: 'To be Decided',
             value: 5
         },
         {
-            source: 'a',
-            target: 'a2',
-            value: 3
+            source: 'Mapped',
+            target: 'Reviewed',
+            value: 85
         },
         {
-            source: 'b',
-            target: 'b1',
-            value: 8
+            source: 'Mapped',
+            target: 'Under Review',
+            value: 10
         },
         {
-            source: 'a',
-            target: 'b1',
-            value: 3
+            source: 'Reviewed',
+            target: 'Meta-reviewed',
+            value: 75
         },
         {
-            source: 'b1',
-            target: 'a1',
-            value: 1
+            source: 'Reviewed',
+            target: 'Excluded',
+            value: 10
         },
         {
-            source: 'b1',
-            target: 'c',
-            value: 2
-        }
+            source: 'Suggested',
+            target: 'Meta-reviewed',
+            value: 5
+        },
+        {
+            source: 'Meta-reviewed',
+            target: 'Included',
+            value: 60
+        },
+        {
+            source: 'Meta-reviewed',
+            target: 'Proposed as New CDE',
+            value: 5
+        },
+        {
+            source: 'Meta-reviewed',
+            target: 'Excluded',
+            value: 5
+        },
+            
         ]
     }
 });
@@ -219,6 +303,22 @@ const option_semantic_map = ref({
     tooltip: {
         trigger: 'item',
         triggerOn: 'mousemove',
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {
+                show: true,
+                title: 'Save as Image',
+            },
+            restore: {
+                show: true,
+                title: 'Restore',
+            },
+            dataZoom: {
+                show: true,
+            },
+        },
     },
     dataZoom: [
         {

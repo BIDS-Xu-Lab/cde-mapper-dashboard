@@ -13,6 +13,8 @@ import { definePreset } from '@primevue/themes';
 import Tooltip from 'primevue/tooltip';
 import { theme } from './theme';
 
+import package_json from '../package.json';
+
 // create the app
 const app = createApp(App)
 
@@ -28,6 +30,7 @@ const store = useDataStore();
 window.store = store;
 // store.loadSettingsFromLocalStorage();
 store.app_config = app_config;
+store.version = package_json.version;
 
 // add the router to the app
 app.use(router);
