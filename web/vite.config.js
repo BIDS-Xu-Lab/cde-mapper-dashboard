@@ -22,6 +22,7 @@ export default ({ mode }) => {
 
     define: {
       app_config: app_config.default,
+      'import.meta.env': JSON.stringify(process.env),
     },
 
     plugins: [
